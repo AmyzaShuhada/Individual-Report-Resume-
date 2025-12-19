@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Family</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
+:root{
+  --pink: #ff77aa;
+  --pink-bright: #ff1493;
+  --pink-light: #ff69b4;
+  --dark-text: #333;
+  --glass: rgba(255, 255, 255, 0.40);
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* BACKGROUND */
+body {
+  background-image: url('flower.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--dark-text);
+  padding: 40px 20px;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* ANIMATED BACKGROUND OVERLAY */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, 
+    rgba(255, 20, 147, 0.1), 
+    rgba(255, 105, 180, 0.1),
+    rgba(255, 182, 193, 0.1));
+  animation: gradientPulse 8s ease infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes gradientPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+/* BACK BUTTON */
+.back-btn {
+  position: fixed;
+  top: 25px;
+  left: 25px;
+  background: white;
+  color: #ff1493;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: 0.3s ease;
+  z-index: 999;
+  border: 2px solid #ff1493;
+  animation: fadeInLeft 0.8s ease;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.back-btn:hover {
+  background: #ff1493;
+  color: white;
+  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.7);
+  transform: translateY(-3px);
+}
+
+/* ================= NAVIGATION ================= */
+nav{
+  background: rgba(255, 255, 255, 0.35);
+  padding: 38px;
+  border-radius: 25px;
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255,255,255,0.5);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+  animation: slideDown 0.8s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+nav ul{
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 35px;
+  padding: 0;
+}
+
+nav ul li a{
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 16px;
+  text-shadow: 0 0 15px rgba(255, 105, 180, 0.8);
+  transition: 0.3s ease;
+  position: relative;
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ff1493, #ff69b4);
+  transition: 0.3s ease;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+nav ul li a:hover{
+  color: white;
+  text-shadow: 0 0 20px #ff1493;
+  transform: translateY(-2px);
+}
+
+/* ================= WRAPPER CONTAINER ================= */
+.container {
+  max-width: 1000px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(15px);
+  border-radius: 25px;
+  padding-bottom: 30px;
+  border: 2px solid rgba(255,255,255,0.5);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  transition: 0.4s ease;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 30px;
+  animation: fadeInUp 0.8s ease;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container:nth-child(2) { animation-delay: 0.2s; }
+.container:nth-child(3) { animation-delay: 0.4s; }
+
+.container:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(255, 105, 180, 0.3);
+  border-color: rgba(255, 105, 180, 0.6);
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  font-size: 32px;
+  background: linear-gradient(135deg, #ff1493, #ff69b4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  padding: 30px 0 15px;
+  letter-spacing: 3px;
+  font-weight: 800;
+  text-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+  position: relative;
+}
+
+.header::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #ff1493, #ff69b4);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.sub-header {
+  text-align: center;
+  font-size: 22px;
+  color: #ff1493;
+  padding-bottom: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+}
+
+/* ================= CONTENT CARD ================= */
+.school-info {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255,255,255,0.6);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  transition: 0.4s ease;
+}
+
+.school-info:hover{
+  transform: scale(1.03);
+  box-shadow: 0 15px 40px rgba(255, 105, 180, 0.3);
+  border-color: rgba(255, 105, 180, 0.6);
+}
+
+.school-info img {
+  width: 320px;
+  height: 320px;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  transition: 0.4s ease;
+}
+
+.school-info:hover img {
+  transform: scale(1.05) rotate(2deg);
+  box-shadow: 0 12px 35px rgba(255, 105, 180, 0.4);
+}
+
+.text h2 {
+  font-size: 28px;
+  background: linear-gradient(135deg, #ff1493, #ff69b4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 15px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.text p {
+  font-size: 17px;
+  text-align: justify;
+  line-height: 1.8;
+  color: #333;
+  font-weight: 500;
+}
+
+/* DECORATIVE ELEMENTS */
+.container::before {
+  content: '❤️';
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  animation: heartbeat 1.5s ease infinite;
+  opacity: 0.7;
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* MOBILE RESPONSIVE */
+@media(max-width: 768px){
+  .back-btn {
+    top: 15px;
+    left: 15px;
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  nav {
+    padding: 25px;
+    margin-bottom: 30px;
+  }
+
+  nav ul {
+    gap: 20px;
+  }
+
+  nav ul li a {
+    font-size: 14px;
+  }
+
+  .container {
+    margin-bottom: 25px;
+  }
+
+  .header {
+    font-size: 26px;
+    padding: 25px 0 12px;
+  }
+
+  .sub-header {
+    font-size: 18px;
+  }
+
+  .school-info{
+    flex-direction: column;
+    text-align: center;
+    padding: 25px;
+  }
+
+  .school-info img{
+    width: 90%;
+    height: auto;
+    max-width: 300px;
+  }
+
+  .text h2 {
+    font-size: 24px;
+  }
+
+  .text p {
+    font-size: 16px;
+  }
+}
+
+@media(max-width: 480px){
+  body {
+    padding: 20px 10px;
+  }
+
+  .header {
+    font-size: 22px;
+  }
+
+  .sub-header {
+    font-size: 16px;
+  }
+
+  .school-info {
+    padding: 20px;
+    margin: 15px;
+  }
+
+  .text h2 {
+    font-size: 20px;
+  }
+
+  .text p {
+    font-size: 15px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+
+
+<!-- NAV BAR -->
+<nav>
+<!-- BACK BUTTON -->
+<a href="page02.html" class="back-btn">⟵ BACK</a>
+  <ul>
+    <li><a href="MyBackground.html">MY BACKGROUND</a></li>
+    <li><a href="MyFamily.html">MY FAMILY</a></li>
+    <li><a href="MyEducation.html">MY EDUCATION</a></li>
+    <li><a href="MyHobby.html">MY HOBBY</a></li>
+    <li><a href="contribution.html">CONTRIBUTION</a></li>
+  </ul>
+</nav>
+
+<!-- ================= FAMILY SECTION 1 ================= -->
+<div class="container">
+  <div class="header">MY FAMILY</div>
+  <div class="sub-header">👨‍👩‍👧‍👦 DAD SIDE</div>
+
+  <div class="school-info">
+    <img src="sazali.jpg" alt="Sazali's Family">
+    <div class="text">
+      <h2>💖 SAZALI'S FAMILY</h2>
+      <p>
+       My family plays an important role in my life. They have always been my source of support, motivation, and strength. Through their guidance and encouragement, I have learned the importance of responsibility, respect, and perseverance. My family continues to inspire me to work hard and achieve my goals       </p>
+    </div>
+  </div>
+</div>
+
+<!-- ================= FAMILY SECTION 2 ================= -->
+<div class="container">
+  <div class="header">MY FAMILY</div>
+  <div class="sub-header">👨‍👩‍👧‍👦 MOM SIDE</div>
+
+  <div class="school-info">
+    <img src="salina.jpg" alt="Syalina's Family">
+    <div class="text">
+      <h2>💖 SYALINA'S FAMILY</h2>
+      <p>
+        My family is my biggest support system. They are always there for me in every situation, whether in happiness or challenges. Their love, care, and encouragement give me confidence and motivation to become a better person and to pursue my dreams with determination.
+      </p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

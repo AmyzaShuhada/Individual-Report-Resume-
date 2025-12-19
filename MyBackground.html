@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Profile — Amyza Shuhada</title>
+
+<!-- Nunito font -->
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --pink: #e78aa3;   
+  --pink-dark:#d66c8a;
+  --pink-bright: #ff69b4;
+  --soft-white: rgba(255,255,255,0.40);
+  --muted-white: rgba(255,255,255,0.25);
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,body{
+  height:100%;
+  font-family:"Nunito", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #fff;
+}
+
+/* === BACKGROUND === */
+body {
+  background-image: url('flower.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ANIMATED GLASS OVERLAY */
+body::before{
+  content:"";
+  position: fixed;
+  inset:0;
+  backdrop-filter: blur(2px) saturate(1.2);
+  background: linear-gradient(45deg, 
+    rgba(255, 20, 147, 0.15), 
+    rgba(255, 105, 180, 0.15),
+    rgba(255, 182, 193, 0.15));
+  animation: gradientPulse 8s ease infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes gradientPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
+}
+
+/* ================= NAVIGATION ================= */
+nav{
+  background: rgba(255, 255, 255, 0.35);
+  padding: 28px;
+  border-radius: 25px;
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255,255,255,0.5);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+  margin: 20px auto 40px;
+  max-width: 1350px;
+  position: relative;
+  z-index: 5;
+  animation: slideDown 0.8s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:35px;
+  padding: 0;
+}
+
+nav ul li a{
+  color: white;
+  font-weight:700;
+  text-decoration:none;
+  font-size:16px;
+  text-shadow: 0 0 15px rgba(255, 105, 180, 0.8);
+  transition:0.3s ease;
+  position: relative;
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ff1493, #ff69b4);
+  transition: 0.3s ease;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+nav ul li a:hover{
+  color: white;
+  text-shadow: 0 0 20px #ff1493;
+  transform: translateY(-2px);
+}
+
+/* BACK BUTTON */
+.back-btn {
+  position: fixed;
+  top: 25px;
+  left: 25px;
+  background: white;
+  color: #ff1493;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: 0.3s ease;
+  z-index: 999;
+  border: 2px solid #ff1493;
+  animation: fadeInLeft 0.8s ease;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.back-btn:hover {
+  background: #ff1493;
+  color: white;
+  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.7);
+  transform: translateY(-3px);
+}
+
+/* MAIN GRID */
+.stage{
+  position:relative;
+  z-index:1;
+  max-width:1350px;
+  margin:30px auto;
+  padding:30px;
+  display:grid;
+  grid-template-columns: 480px 1fr;
+  gap:28px;
+  align-items:start;
+}
+
+/* LEFT COLUMN */
+.left{
+  position:relative;
+  height:980px;
+  animation: fadeInScale 1s ease;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* INDIVIDU GAMBAR */
+.person{
+  position:absolute;
+  left:-280px;
+  top:-730px;
+  width:1200px;
+  max-width:none;
+  object-fit:cover;
+  pointer-events:none;
+  filter: drop-shadow(0 15px 40px rgba(0,0,0,0.5));
+  border-radius:10px;
+  transition: 0.3s ease;
+}
+
+.person:hover {
+  transform: scale(1.02);
+  filter: drop-shadow(0 20px 50px rgba(255, 105, 180, 0.4));
+}
+
+/* Name label */
+.name-tile{
+  position:absolute;
+  left:40px;
+  bottom:160px;
+  background: linear-gradient(135deg, #ff1493, #ff69b4);
+  color: #fff;
+  padding:22px 34px;
+  font-size:38px;
+  font-weight:800;
+  border-radius:12px;
+  transform: rotate(-12deg);
+  box-shadow: 
+    0 8px 25px rgba(255, 20, 147, 0.4),
+    0 0 40px rgba(255, 105, 180, 0.3);
+  letter-spacing:1px;
+  animation: bounceIn 1s ease;
+  animation-delay: 0.3s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: rotate(-12deg) scale(0.5);
+  }
+  60% {
+    transform: rotate(-12deg) scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(-12deg) scale(1);
+  }
+}
+
+.age{
+  position:absolute;
+  left:230px;
+  bottom:220px;
+  transform: rotate(-8deg);
+  background: linear-gradient(135deg, #ff69b4, #ffb6c1);
+  color: #fff;
+  font-weight:800;
+  font-size:18px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  box-shadow: 
+    0 6px 20px rgba(255, 105, 180, 0.4),
+    0 0 30px rgba(255, 105, 180, 0.3);
+  animation: fadeIn 1s ease;
+  animation-delay: 0.5s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+  z-index: 10;
+  letter-spacing: 0.5px;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+.quote-box{
+  position:absolute;
+  left:70px;
+  bottom:60px;
+  background: linear-gradient(135deg, #ff1493, #ff69b4);
+  padding:16px 24px;
+  border-radius:12px;
+  width:260px;
+  transform: rotate(-2deg);
+  box-shadow: 
+    0 8px 25px rgba(255, 20, 147, 0.4),
+    0 0 30px rgba(255, 105, 180, 0.3);
+  font-weight:700;
+  text-align:center;
+  font-size: 16px;
+  animation: slideInUp 1s ease;
+  animation-delay: 0.7s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: rotate(-2deg) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(-2deg) translateY(0);
+  }
+}
+
+/* RIGHT COLUMN */
+.right{
+  padding-top:18px;
+  padding-bottom:60px;
+}
+
+/* GLASS CARDS */
+.motivation, .personality, .exam, .goals, .contacts, .email-pill {
+  background: rgba(255, 255, 255, 0.35);
+  color: #222;
+  padding: 25px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255,255,255,0.4);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+  transition: 0.4s ease;
+  animation: slideInRight 0.8s ease;
+  animation-fill-mode: both;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.motivation { animation-delay: 0.2s; }
+.personality { animation-delay: 0.3s; }
+.exam { animation-delay: 0.4s; }
+.goals { animation-delay: 0.5s; }
+.contacts { animation-delay: 0.6s; }
+.email-pill { animation-delay: 0.7s; }
+
+.motivation:hover, .personality:hover, .exam:hover, .goals:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(255, 105, 180, 0.3);
+  border-color: rgba(255, 105, 180, 0.6);
+}
+
+.motivation h2{
+  margin:0 0 12px 0;
+  font-size:26px;
+  font-weight:800;
+  font-style:italic;
+  background: linear-gradient(135deg, #ff1493, #ff69b4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.motivation p{
+  margin:0;
+  line-height:1.6;
+  font-weight:500;
+  color: #333;
+}
+
+.personality .label{
+  font-weight:800;
+  margin-bottom:16px;
+  font-size: 20px;
+  background: linear-gradient(135deg, #ff1493, #ff69b4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-row{
+  display:flex;
+  align-items:center;
+  margin-bottom:16px;
+}
+
+.stat-left{
+  flex:1;
+  font-weight: 700;
+  color: #333;
+}
+
+.progress{
+  flex:3;
+  background: rgba(255,255,255,0.5);
+  height:12px;
+  border-radius:20px;
+  margin:0 12px;
+  overflow:hidden;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.fill{
+  height:100%;
+  width:0;
+  background: linear-gradient(90deg, #ff1493, #ff69b4, #ffb6c1);
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 10px rgba(255, 105, 180, 0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.4), 
+    transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.percent{
+  width:50px;
+  text-align:right;
+  font-weight: 800;
+  color: #ff1493;
+  font-size: 16px;
+}
+
+.exam{
+  display:flex;
+  align-items:center;
+}
+
+.thumb{
+  width:90px;
+  height:90px;
+  background: linear-gradient(135deg, #ff1493, #ff69b4);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  margin-right:16px;
+  border-radius:15px;
+  font-size: 24px;
+  color: white;
+  box-shadow: 0 8px 20px rgba(255, 20, 147, 0.4);
+  transition: 0.3s ease;
+}
+
+.thumb:hover {
+  transform: rotate(5deg) scale(1.1);
+}
+
+.exam .text{
+  line-height:1.6;
+  font-weight: 600;
+  color: #333;
+}
+
+.exam .text b {
+  background: linear-gradient(135deg, #ff1493, #ff69b4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 18px;
+}
+
+.goals h3{
+  margin-top:0;
+  margin-bottom: 12px;
+  font-size: 22px;
+  background: linear-gradient(135deg, #ff1493, #ff69b4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.goals p {
+  line-height: 1.8;
+  font-weight: 600;
+  color: #333;
+}
+
+.contacts{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.contact-pill, .email-pill{
+  background: linear-gradient(135deg, rgba(255, 20, 147, 0.8), rgba(255, 105, 180, 0.8));
+  padding:12px 20px;
+  border-radius:25px;
+  font-weight:700;
+  color:#fff;
+  box-shadow: 0 5px 15px rgba(255, 20, 147, 0.3);
+  transition: 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.contact-pill:hover, .email-pill:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 20, 147, 0.5);
+}
+
+/* RESPONSIVE */
+@media(max-width: 1000px){
+  .stage{
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .left{
+    height: 500px;
+    margin: 0 auto;
+  }
+  
+  .person{
+    left: -100px;
+    top: -300px;
+    width: 700px;
+  }
+  
+  .name-tile{
+    left: 30px;
+    bottom: 150px;
+    font-size: 32px;
+  }
+  
+  .age{
+    left: 160px;
+    bottom: 150px;
+    font-size: 16px;
+    padding: 8px 14px;
+  }
+  
+  .quote-box{
+    left: 50px;
+    bottom: 60px;
+    width: 220px;
+  }
+}
+
+@media(max-width: 600px){
+  .back-btn{
+    top: 15px;
+    left: 15px;
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+  
+  nav{
+    margin: 15px;
+    padding: 20px;
+  }
+  
+  nav ul{
+    gap: 20px;
+  }
+  
+  nav ul li a{
+    font-size: 14px;
+  }
+  
+  .stage{
+    padding: 15px;
+    margin: 15px auto;
+  }
+  
+  .left{
+    height: 400px;
+  }
+  
+  .person{
+    left: -80px;
+    top: -250px;
+    width: 500px;
+  }
+  
+  .name-tile{
+    font-size: 26px;
+    padding: 16px 24px;
+    left: 20px;
+    bottom: 120px;
+  }
+  
+  .age{
+    left: 120px;
+    bottom: 120px;
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+  
+  .quote-box{
+    left: 30px;
+    bottom: 40px;
+    width: 200px;
+    font-size: 14px;
+    padding: 12px 18px;
+  }
+  
+  .motivation h2{
+    font-size: 22px;
+  }
+  
+  .personality .label{
+    font-size: 18px;
+  }
+  
+  .thumb{
+    width: 70px;
+    height: 70px;
+    font-size: 18px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+
+
+<nav>
+<!-- BACK BUTTON -->
+<a href="page02.html" class="back-btn">⟵ BACK</a>
+  <ul>
+    <li><a href="MyBackground.html">MY BACKGROUND</a></li>
+    <li><a href="MyFamily.html">MY FAMILY</a></li>
+    <li><a href="MyEducation.html">MY EDUCATION</a></li>
+    <li><a href="MyHobby.html">MY HOBBY</a></li>
+    <li><a href="contribution.html">CONTRIBUTION</a></li>
+  </ul>
+</nav>
+
+<div class="stage">
+
+  <!-- LEFT -->
+  <div class="left">
+    <img src="person3.png" class="person" alt="Individu">
+    <div class="name-tile">Amyza Shuhada</div>
+    <div class="quote-box">"Dream big, work hard!"</div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right">
+    <div class="motivation">
+      <h2>💖 Motivation</h2>
+      <p>
+        My motivation comes from my desire to constantly improve myself and create a better future.
+        I want to become someone who is responsible, reliable, and capable of achieving meaningful goals.
+        Every challenge I face pushes me to grow, and every small achievement reminds me that progress is possible.
+      </p>
+    </div>
+
+    <div class="personality">
+      <div class="label">✨ Personality</div>
+
+      <div class="stat-row">
+        <div class="stat-left">JAVA SCRIP</div>
+        <div class="progress"><div id="fill1" class="fill"></div></div>
+        <div class="percent">93%</div>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat-left">CSS</div>
+        <div class="progress"><div id="fill2" class="fill"></div></div>
+        <div class="percent">90%</div>
+      </div>
+
+    </div>
+
+    <div class="exam">
+      <div class="thumb" id="gradThumb">GRAD</div>
+      <div class="text">
+        <b>📚 EXAM RESULT</b><br>
+        PRIMARY SCHOOL : UPSR : 6A 2B<br>
+        SECONDARY SCHOOL : SPM : 5A 2B 2C<br>
+        UNIVERSITY : CGPA : 3.65
+      </div>
+    </div>
+
+    <div class="goals">
+      <h3>🎯 Goals</h3>
+      <p>
+        • To create a stable and meaningful future.<br>
+        • I want to build a career that I enjoy and can make my family proud.
+      </p>
+    </div>
+
+    <div class="contacts">
+      <div class="contact-pill">📱 017-7462049</div>
+      <div class="contact-pill">📸 Instagram : Syhdeaa</div>
+    </div>
+    <div class="email-pill">📧 amyzasHuada265@yahoo.com</div>
+  </div>
+</div>
+
+<script>
+// Animate progress bars
+setTimeout(()=> {
+  document.getElementById('fill1').style.width = '93%';
+  document.getElementById('fill2').style.width = '95%';
+}, 500);
+
+// Add pulse animation to GRAD thumb
+const gradThumb = document.getElementById('gradThumb');
+setInterval(() => {
+  gradThumb.style.transform = 'scale(1.1)';
+  setTimeout(() => {
+    gradThumb.style.transform = 'scale(1)';
+  }, 200);
+}, 3000);
+</script>
+</body>
+</html>

@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Yuha Background - Modern Edition</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+    :root{
+      --glass: rgba(255, 255, 255, 0.25);
+      --glass-border: rgba(255, 255, 255, 0.4);
+      --pink-dark: #ff1493;
+      --pink-light: #ff69b4;
+      --shadow: rgba(255, 105, 180, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding: 20px;
+
+      background-image: url('flower.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+
+      font-family: "Poppins", Arial, sans-serif;
+      position: relative;
+    }
+
+    /* ANIMATED BACKGROUND OVERLAY */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, 
+        rgba(255, 20, 147, 0.1), 
+        rgba(255, 105, 180, 0.1),
+        rgba(255, 182, 193, 0.1));
+      animation: gradientShift 10s ease infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.6; }
+    }
+
+    /* CLOCK WIDGET */
+    .clock-widget {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border: 2px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 20px 30px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      animation: fadeInDown 1s ease;
+    }
+
+    /* BACK BUTTON */
+    .back-btn {
+      position: fixed;
+      top: 30px;
+      left: 30px;
+      background: white;
+      color: #ff1493;
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transition: 0.3s ease;
+      z-index: 1000;
+      animation: fadeInDown 1s ease;
+      border: 2px solid #ff1493;
+    }
+
+    .back-btn:hover {
+      background: #ff1493;
+      color: white;
+      box-shadow: 0 8px 20px rgba(255, 105, 180, 0.7);
+      transform: translateY(-3px);
+    }
+
+    .clock-time {
+      font-size: 32px;
+      font-weight: 700;
+      color: white;
+      text-shadow: 
+        0 0 10px rgba(255, 105, 180, 0.8),
+        0 0 20px rgba(255, 105, 180, 0.5),
+        2px 2px 4px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    .clock-date {
+      font-size: 14px;
+      font-weight: 500;
+      color: white;
+      text-align: center;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* KOTAK UTAMA */
+    .container{
+      width: 95%;
+      max-width: 1100px;
+      background: rgba(255, 230, 242, 0.92);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      border-radius: 30px;
+      overflow: hidden;
+      border: 2px solid var(--glass-border);
+      position: relative;
+      z-index: 1;
+      animation: fadeInUp 1s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* HEADER */
+    header{
+      background: linear-gradient(135deg, 
+        rgba(255, 20, 147, 0.8), 
+        rgba(255, 105, 180, 0.8),
+        rgba(255, 182, 193, 0.8));
+      backdrop-filter: blur(10px);
+      padding: 40px 28px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.1), 
+        transparent);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+
+    header h1{
+      margin: 0;
+      font-size: 36px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 3px;
+      text-shadow: 
+        0 0 20px rgba(255, 255, 255, 0.5),
+        0 0 40px rgba(255, 105, 180, 0.4),
+        3px 3px 6px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 1;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 
+          0 0 20px rgba(255, 255, 255, 0.5),
+          0 0 40px rgba(255, 105, 180, 0.4),
+          3px 3px 6px rgba(0, 0, 0, 0.3);
+      }
+      to {
+        text-shadow: 
+          0 0 30px rgba(255, 255, 255, 0.8),
+          0 0 60px rgba(255, 105, 180, 0.6),
+          3px 3px 6px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    /* SUSUNAN */
+    .layout{
+      display: flex;
+      min-height: 450px;
+    }
+
+    /* SIDEBAR */
+    nav{
+      width: 240px;
+      background: rgba(255, 255, 255, 0.6);
+      padding: 35px 25px;
+      border-right: 2px solid rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul{
+      list-style: none;
+      padding: 0;
+    }
+
+    nav li{
+      padding: 15px 0;
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    nav li:hover {
+      transform: translateX(5px);
+    }
+
+    nav a{
+      text-decoration: none;
+      color: #a83a6d;
+      font-size: 15px;
+      text-shadow: none;
+      transition: 0.3s ease;
+      display: inline-block;
+    }
+
+    nav a:hover{
+      color: var(--pink-light);
+      text-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
+      transform: scale(1.05);
+    }
+
+    .social-media {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 2px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .social-media p {
+      color: #a83a6d;
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-shadow: none;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      transition: 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      transform: translateY(-5px) scale(1.1);
+      filter: drop-shadow(0 5px 15px rgba(255, 105, 180, 0.6));
+    }
+
+    .social-icons img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      transition: 0.3s ease;
+    }
+
+    .social-icons a:hover img {
+      border-color: var(--pink-light);
+    }
+
+    /* MAIN */
+    main{
+      flex: 1;
+      padding: 40px;
+      color: #333;
+    }
+
+    main h2{
+      font-size: 32px;
+      font-weight: 700;
+      color: #a83a6d;
+      margin-bottom: 8px;
+      text-shadow: none;
+      animation: slideInRight 0.8s ease;
+    }
+
+    main h3{
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 20px;
+      font-weight: 500;
+      text-shadow: none;
+      animation: slideInRight 1s ease;
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* TABLE MODEN */
+    .info-table{
+      width: 100%;
+      background: rgba(255, 255, 255, 0.4);
+      padding: 30px;
+      border-radius: 20px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      animation: fadeIn 1.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .info-table table{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 17px;
+    }
+
+    .info-table td{
+      padding: 18px 15px;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+      transition: 0.3s ease;
+    }
+
+    .info-table tr:hover td {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateX(5px);
+    }
+
+    .info-table td:first-child{
+      font-weight: 700;
+      color: #a83a6d;
+      width: 40%;
+      text-shadow: none;
+    }
+
+    .info-table td:last-child {
+      color: #333;
+      text-shadow: none;
+    }
+
+    .info-table tr:last-child td{
+      border-bottom: none;
+    }
+
+    /* FOOTER */
+    footer{
+      background: linear-gradient(135deg, 
+        rgba(255, 20, 147, 0.9), 
+        rgba(255, 105, 180, 0.9));
+      backdrop-filter: blur(10px);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 15px;
+      font-weight: 600;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      letter-spacing: 1px;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width: 900px){
+      .layout{
+        flex-direction: column;
+      }
+      
+      nav{
+        width: 100%;
+        border-right: none;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .back-btn {
+        top: 15px;
+        left: 15px;
+        padding: 10px 16px;
+        font-size: 14px;
+      }
+
+      .clock-widget {
+        top: 15px;
+        right: 15px;
+        padding: 15px 20px;
+      }
+
+      .clock-time {
+        font-size: 24px;
+      }
+
+      .clock-date {
+        font-size: 12px;
+      }
+
+      header h1 {
+        font-size: 28px;
+      }
+
+      main h2 {
+        font-size: 26px;
+      }
+
+      main h3 {
+        font-size: 18px;
+      }
+
+      .info-table {
+        padding: 20px;
+      }
+
+      .info-table table {
+        font-size: 15px;
+      }
+    }
+
+    @media(max-width: 600px){
+      .back-btn {
+        position: static;
+        display: inline-block;
+        margin: 0 auto 15px;
+      }
+
+      .clock-widget {
+        position: static;
+        margin: 0 auto 20px;
+        max-width: 200px;
+      }
+
+      body {
+        padding: 10px;
+        display: block;
+        padding-top: 20px;
+      }
+
+      .container {
+        border-radius: 20px;
+      }
+
+      header {
+        padding: 25px 15px;
+      }
+
+      header h1 {
+        font-size: 22px;
+        letter-spacing: 2px;
+      }
+
+      main {
+        padding: 25px;
+      }
+
+      nav {
+        padding: 25px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <!-- CLOCK WIDGET -->
+  <div class="clock-widget">
+    <div class="clock-time" id="time">00:00:00</div>
+    <div class="clock-date" id="date">Loading...</div>
+  </div>
+
+  <div class="container">
+
+    <header>
+        <!-- BACK BUTTON -->
+ 	<a href="page01.html" class="back-btn">⟵ BACK</a>
+      <h1>✨ YUHA'S BACKGROUND ✨</h1>
+    </header>
+
+    <div class="layout">
+
+      <nav>
+        <ul>
+          <li><a href="MyBackground.html">🏠 MY BACKGROUND</a></li>
+          <li><a href="MyFamily.html">👨‍👩‍👧‍👦 MY FAMILY</a></li>
+          <li><a href="MyEducation.html">📚 MY EDUCATION</a></li>
+          <li><a href="MyHobby.html">🌸 MY HOBBY</a></li>
+          <li><a href="contribution.html"> CONTRIBUTION</a></li>
+        </ul>
+
+        <div class="social-media">
+          <p>SOCIAL MEDIA:</p>
+          <div class="social-icons">
+            <a href="https://www.instagram.com/syhdeaa" target="_blank">
+              <img src="ig.jpg" alt="Instagram">
+            </a>
+            <a href="https://www.facebook.com/share/1DDSrg4JgF/" target="_blank">
+              <img src="fb2.jpg" alt="Facebook">
+            </a>
+             <a href="https://wa.link/e1q1hl" target="_blank">
+              <img src="whasap.png" alt="Facebook">
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <main>
+        <h2>NOR'AMYZA SHUHADA BINTI SAZALI</h2>
+        <h3>📅 26 MEI 2005</h3>
+
+        <div class="info-table">
+          <table>
+            <tr>
+              <td>👤 Nama Penuh</td>
+              <td>Nor Amyza Shuhada binti Sazali</td>
+            </tr>
+            <tr>
+              <td>🎂 Tarikh Lahir</td>
+              <td>26 Mei 2005</td>
+            </tr>
+            <tr>
+              <td>⏳ Umur</td>
+              <td>20 Tahun</td>
+            </tr>
+            <tr>
+              <td>🎓 Tempat Belajar</td>
+              <td>UiTM — Pengurusan Maklumat</td>
+            </tr>
+            <tr>
+     
+          </table>
+        </div>
+              <td>
+<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/3bNv3VuUOKgrf5hu3YcuRo?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+             </td>
+
+      </main>
+
+    </div>
+
+    <footer>
+      💖 Copyright © 2025 - Made with Love 💖
+    </footer>
+
+  </div>
+
+  <script>
+    // CLOCK FUNCTION
+    function updateClock() {
+      const now = new Date();
+      
+      // Time
+      let hours = now.getHours();
+      let minutes = now.getMinutes();
+      let seconds = now.getSeconds();
+      
+      hours = hours < 10 ? '0' + hours : hours;
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      seconds = seconds < 10 ? '0' + seconds : seconds;
+      
+      document.getElementById('time').textContent = hours + ':' + minutes + ':' + seconds;
+      
+      // Date
+      const days = ['Ahad', 'Isnin', 'Selasa', 'Rabu', 'Khamis', 'Jumaat', 'Sabtu'];
+      const months = ['Jan', 'Feb', 'Mac', 'Apr', 'Mei', 'Jun', 'Jul', 'Ogos', 'Sep', 'Okt', 'Nov', 'Dis'];
+      
+      const dayName = days[now.getDay()];
+      const day = now.getDate();
+      const month = months[now.getMonth()];
+      const year = now.getFullYear();
+      
+      document.getElementById('date').textContent = dayName + ', ' + day + ' ' + month + ' ' + year;
+    }
+    
+    // Update clock every second
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    // Add stagger animation to table rows
+    window.addEventListener('load', function() {
+      const rows = document.querySelectorAll('.info-table tr');
+      rows.forEach((row, index) => {
+        row.style.opacity = '0';
+        row.style.transform = 'translateX(-20px)';
+        row.style.transition = 'all 0.5s ease';
+        
+        setTimeout(() => {
+          row.style.opacity = '1';
+          row.style.transform = 'translateX(0)';
+        }, 1200 + (index * 100));
+      });
+    });
+  </script>
+
+</body>
+</html>

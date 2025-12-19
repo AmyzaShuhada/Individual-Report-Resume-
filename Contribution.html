@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Contribution</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Playfair+Display:wght@700;800;900&family=Righteous&display=swap');
+
+:root {
+  --pink: #ff77aa;
+  --pink-bright: #ff1493;
+  --pink-light: #ff69b4;
+  --hot-pink: #ff1493;
+  --dark-text: #333;
+  --glass: rgba(255, 255, 255, 0.40);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+/* BACKGROUND */
+body {
+  background-image: url('flower.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--dark-text);
+  padding: 40px 20px;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, 
+    rgba(255, 20, 147, 0.1), 
+    rgba(255, 105, 180, 0.1),
+    rgba(255, 182, 193, 0.1));
+  animation: gradientPulse 8s ease infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes gradientPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+.particle {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 105, 180, 0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  animation: float-particle 20s infinite;
+}
+
+@keyframes float-particle {
+  0%, 100% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(50px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+.back-btn {
+  position: fixed;
+  top: 25px;
+  left: 25px;
+  background: white;
+  color: #ff1493;
+  padding: 14px 24px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: 0.3s ease;
+  z-index: 999;
+  border: 2px solid #ff1493;
+  animation: fadeInLeft 0.8s ease;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.back-btn:hover {
+  background: linear-gradient(135deg, #ff1493, #ff69b4);
+  color: white;
+  box-shadow: 0 10px 30px rgba(255, 105, 180, 0.7);
+  transform: translateY(-3px);
+  border-color: transparent;
+}
+
+nav {
+  background: rgba(255, 255, 255, 0.25);
+  padding: 40px;
+  border-radius: 30px;
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  margin-bottom: 50px;
+  position: relative;
+  z-index: 1;
+  animation: slideDown 0.8s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  padding: 0;
+}
+
+nav ul li a {
+  color: white;
+  font-weight: 800;
+  text-decoration: none;
+  font-size: 17px;
+  text-shadow: 0 0 20px rgba(255, 105, 180, 0.9);
+  transition: 0.3s ease;
+  position: relative;
+  letter-spacing: 0.5px;
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ff1493, #ff69b4);
+  transition: 0.3s ease;
+  border-radius: 2px;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+nav ul li a:hover {
+  color: white;
+  text-shadow: 0 0 25px #ff1493, 0 0 40px #ff69b4;
+  transform: translateY(-3px);
+}
+
+.container {
+  max-width: 1300px;
+  margin: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-card {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(20px);
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  border-radius: 30px;
+  padding: 40px;
+  margin-bottom: 40px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  transition: 0.4s ease;
+  animation: fadeInUp 0.8s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 60px rgba(255, 105, 180, 0.3);
+  border-color: rgba(255, 105, 180, 0.7);
+}
+
+.video-card {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(20px);
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  border-radius: 30px;
+  padding: 40px;
+  margin-bottom: 40px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  transition: 0.4s ease;
+  animation: fadeInUp 0.8s ease 0.2s;
+  animation-fill-mode: both;
+}
+
+.video-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 60px rgba(255, 105, 180, 0.3);
+  border-color: rgba(255, 105, 180, 0.7);
+}
+
+.contributions-card {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(20px);
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  border-radius: 30px;
+  padding: 40px;
+  margin-bottom: 40px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  transition: 0.4s ease;
+  animation: fadeInUp 0.8s ease;
+  animation-fill-mode: both;
+}
+
+.contributions-card:nth-child(3) { animation-delay: 0.4s; }
+.contributions-card:nth-child(4) { animation-delay: 0.6s; }
+.contributions-card:nth-child(5) { animation-delay: 0.8s; }
+
+.contributions-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 60px rgba(255, 105, 180, 0.3);
+  border-color: rgba(255, 105, 180, 0.7);
+}
+
+.hero-section {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.hero-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  margin-bottom: 35px;
+  flex-wrap: wrap;
+}
+
+.hero-left {
+  text-align: left;
+}
+
+.hero-title {
+  font-size: 90px;
+  font-weight: 900;
+  font-family: 'Righteous', cursive;
+  color: white;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  text-shadow: 
+    0 0 20px rgba(255, 105, 180, 1),
+    0 0 40px rgba(255, 105, 180, 0.8),
+    0 0 60px rgba(255, 105, 180, 0.6),
+    0 0 80px rgba(255, 105, 180, 0.4),
+    2px 2px 4px rgba(0, 0, 0, 0.3);
+  animation: glowPulse 2s ease-in-out infinite alternate;
+  position: relative;
+}
+
+@keyframes glowPulse {
+  from {
+    text-shadow: 
+      0 0 20px rgba(255, 105, 180, 1),
+      0 0 40px rgba(255, 105, 180, 0.8),
+      0 0 60px rgba(255, 105, 180, 0.6),
+      0 0 80px rgba(255, 105, 180, 0.4),
+      2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  to {
+    text-shadow: 
+      0 0 30px rgba(255, 105, 180, 1),
+      0 0 60px rgba(255, 105, 180, 1),
+      0 0 90px rgba(255, 105, 180, 0.8),
+      0 0 120px rgba(255, 105, 180, 0.6),
+      2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.hero-right {
+  position: relative;
+}
+
+.circle-image {
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 10px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 
+    0 0 40px rgba(255, 105, 180, 0.7),
+    0 0 80px rgba(255, 105, 180, 0.5),
+    0 20px 50px rgba(0, 0, 0, 0.4);
+  position: relative;
+  animation: float 4s ease-in-out infinite;
+}
+
+.circle-image::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #ff1493, #ff69b4, #ffb6c1, #ff1493);
+  z-index: -1;
+  animation: rotate 4s linear infinite;
+}
+
+.circle-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, transparent 60%, rgba(255, 105, 180, 0.2));
+}
+
+.circle-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.4s ease;
+}
+
+.circle-image:hover img {
+  transform: scale(1.15) rotate(5deg);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-25px) rotate(2deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.hero-description {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 25px;
+  padding: 30px 50px;
+  display: inline-block;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  transition: 0.3s ease;
+}
+
+.hero-description:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(255, 105, 180, 0.3);
+}
+
+.hero-description p {
+  font-size: 19px;
+  color: #333;
+  font-weight: 600;
+  line-height: 1.9;
+}
+
+.section-header {
+  text-align: center;
+  font-size: 48px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #ff1493, #ff69b4, #ffb6c1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 35px;
+  letter-spacing: 3px;
+  position: relative;
+  filter: drop-shadow(0 0 20px rgba(255, 105, 180, 0.4));
+}
+
+.section-header::after {
+  content: '';
+  display: block;
+  width: 120px;
+  height: 5px;
+  background: linear-gradient(90deg, #ff1493, #ff69b4, #ffb6c1);
+  margin: 20px auto 0;
+  border-radius: 3px;
+  box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.video-container video,
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 25px;
+  border: none;
+}
+
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 25px;
+  margin-bottom: 30px;
+}
+
+.contributions-grid {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  gap: 0;
+}
+
+.contribution-card {
+  min-width: 100%;
+  flex-shrink: 0;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.contribution-card-inner {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(20px);
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.contribution-card-inner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent, rgba(255, 105, 180, 0.1));
+  opacity: 0;
+  transition: 0.4s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.contribution-card-inner:hover::before {
+  opacity: 1;
+}
+
+.contribution-card-inner:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 25px 60px rgba(255, 105, 180, 0.5);
+  border-color: rgba(255, 105, 180, 0.9);
+}
+
+.contribution-image-wrapper {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.6);
+}
+
+.contribution-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: 0.5s ease;
+  display: block;
+}
+
+.contribution-card-inner:hover img {
+  transform: scale(1.1) rotate(2deg);
+}
+
+.contribution-content {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 25px;
+  flex-grow: 1;
+}
+
+.contribution-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #ff1493, #ff69b4, #ffb6c1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 15px;
+  letter-spacing: 0.5px;
+  filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.3));
+}
+
+.contribution-description {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.8;
+  text-align: justify;
+  font-weight: 500;
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+  margin-bottom: 25px;
+}
+
+.carousel-btn {
+  background: linear-gradient(135deg, #ff1493, #ff69b4);
+  color: white;
+  border: none;
+  padding: 14px 35px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 8px 20px rgba(255, 20, 147, 0.4);
+  font-family: 'Poppins', sans-serif;
+}
+
+.carousel-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(255, 20, 147, 0.6);
+  background: linear-gradient(135deg, #ff69b4, #ff1493);
+}
+
+.carousel-btn:active {
+  transform: translateY(-1px);
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(255, 20, 147, 0.3);
+  cursor: pointer;
+  transition: 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.dot:hover {
+  background: rgba(255, 20, 147, 0.5);
+  transform: scale(1.1);
+}
+
+.dot.active {
+  background: linear-gradient(135deg, #ff1493, #ff69b4);
+  transform: scale(1.3);
+  box-shadow: 0 0 15px rgba(255, 105, 180, 0.8);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+  .back-btn {
+    top: 15px;
+    left: 15px;
+    padding: 12px 18px;
+    font-size: 14px;
+  }
+
+  nav {
+    padding: 30px 20px;
+  }
+
+  nav ul {
+    gap: 25px;
+  }
+
+  nav ul li a {
+    font-size: 15px;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    gap: 35px;
+  }
+  
+  .hero-left {
+    text-align: center;
+  }
+  
+  .hero-title {
+    font-size: 60px;
+  }
+  
+  .circle-image {
+    width: 280px;
+    height: 280px;
+  }
+
+  .hero-description {
+    padding: 25px 30px;
+  }
+
+  .hero-description p {
+    font-size: 17px;
+  }
+  
+  .section-header {
+    font-size: 38px;
+  }
+
+  .contribution-image-wrapper {
+    height: 400px;
+  }
+
+  .carousel-btn {
+    padding: 12px 25px;
+    font-size: 15px;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+  }
+
+  .contribution-title {
+    font-size: 22px;
+  }
+
+  .contribution-description {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 20px 12px;
+  }
+
+  .hero-card,
+  .video-card,
+  .contributions-card {
+    padding: 30px 20px;
+  }
+
+  .hero-title {
+    font-size: 48px;
+  }
+
+  .circle-image {
+    width: 240px;
+    height: 240px;
+  }
+
+  .section-header {
+    font-size: 32px;
+  }
+
+  .contribution-image-wrapper {
+    height: 350px;
+  }
+
+  .contribution-title {
+    font-size: 20px;
+  }
+
+  .contribution-content {
+    padding: 20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- FLOATING PARTICLES -->
+<div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+<div class="particle" style="left: 20%; animation-delay: 3s;"></div>
+<div class="particle" style="left: 30%; animation-delay: 6s;"></div>
+<div class="particle" style="left: 40%; animation-delay: 2s;"></div>
+<div class="particle" style="left: 50%; animation-delay: 5s;"></div>
+<div class="particle" style="left: 60%; animation-delay: 8s;"></div>
+<div class="particle" style="left: 70%; animation-delay: 4s;"></div>
+<div class="particle" style="left: 80%; animation-delay: 7s;"></div>
+<div class="particle" style="left: 90%; animation-delay: 1s;"></div>
+
+
+
+<!-- NAVIGATION BAR -->
+<nav>
+<!-- BACK BUTTON -->
+<a href="page02.html" class="back-btn">⟵ BACK</a>
+  <ul>
+    <li><a href="MyBackground.html">MY BACKGROUND</a></li>
+    <li><a href="MyFamily.html">MY FAMILY</a></li>
+    <li><a href="MyEducation.html">MY EDUCATION</a></li>
+    <li><a href="MyHobby.html">MY HOBBY</a></li>
+    <li><a href="MyContribution.html">CONTRIBUTION</a></li>
+  </ul>
+</nav>
+
+<!-- MAIN CONTAINER -->
+<div class="container">
+  
+  <!-- HERO SECTION -->
+  <div class="hero-card">
+    <div class="hero-section">
+      <div class="hero-content">
+        <div class="hero-left">
+          <h1 class="hero-title">🎯 Contribution</h1>
+        </div>
+        <div class="hero-right">
+          <div class="circle-image">
+            <img src="con1.jpg" alt="My Contribution">
+          </div>
+        </div>
+      </div>
+      <div class="hero-description">
+        <p>Throughout my journey, I have actively contributed to various activities and organizations. 
+        These contributions have helped me grow personally and professionally while making a positive impact on others.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO SECTION -->
+  <div class="video-card">
+    <h2 class="section-header">📹 Contribution Video</h2>
+    <div class="video-container">
+      <video autoplay muted loop playsinline>
+        <source src="vd.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <!-- BRASSBAND CONTRIBUTIONS -->
+  <div class="contributions-card">
+    <h2 class="section-header">🎺 Brassband </h2>
+    
+    <div class="carousel-container">
+      <div class="contributions-grid" id="brassbandCarousel">
+        
+        <div class="contribution-card">
+          <div class="contribution-card-inner">
+            <div class="contribution-image-wrapper">
+              <img src="bb1.jpg" alt="Brassband 1">
+            </div>
+            <div class="contribution-content">
+              <h3 class="contribution-title">Brassband Performance</h3>
+              <p class="contribution-description">
+                Actively participated in brassband performances, showcasing musical talents and bringing joy to various events and ceremonies.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contribution-card">
+          <div class="contribution-card-inner">
+            <div class="contribution-image-wrapper">
+              <img src="bb2.jpg" alt="Brassband 2">
+            </div>
+            <div class="contribution-content">
+              <h3 class="contribution-title">Musical Excellence</h3>
+              <p class="contribution-description">
+                Contributed to creating harmonious melodies and memorable performances that entertained audiences and represented our institution.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contribution-card">
+          <div class="contribution-card-inner">
+            <div class="contribution-image-wrapper">
+              <img src="bb3.jpg" alt="Brassband 3">
+            </div>
+            <div class="contribution-content">
+              <h3 class="contribution-title">Team Coordination</h3>
+              <p class="contribution-description">
+                Worked collaboratively with fellow musicians to achieve synchronized performances and maintain high standards of musical quality.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contribution-card">
+          <div class="contribution-card-inner">
+            <div class="contribution-image-wrapper">
+              <img src="bb4.jpg" alt="Brassband 4">
+            </div>
+            <div class="contribution-content">
+              <h3 class="contribution-title">Event Participation</h3>
+              <p class="contribution-description">
+                Participated in various school and community events, contributing to celebrations and cultural programs through music.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contribution-card">
+          <div class="contribution-card-inner">
+            <div class="contribution-image-wrapper">
+              <img src="bb5.jpg" alt="Brassband 5">
+            </div>
+            <div class="contribution-content">
+              <h3 class="contribution-title">Musical Legacy</h3>
+              <p class="contribution-description">
+                Helped preserve and promote the tradition of brassband music while inspiring younger members to continue this artistic journey.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="carousel-controls">
+      <button class="carousel-btn" onclick="previousSlide(1)">⟵ Previous</button>
+      <button class="carousel-btn" onclick="nextSlide(1)">Next ⟶</button>
+    </div>
+
+    <div class="carousel-dots" id="dots1"></div>
+  </div>
+
+  <!-- CENDOL CONTRIBUTIONS -->
+  <div class="contributions-card">
+    <h2 class="section-header">JOHOR ALUMNI STUDENT'S ASSOCIATION</h2>
+    
+    <div class="carousel-container">
+      <div class="contributions-grid" id="cendolCarousel">
+        
+        <div class="contribution-card">
+          <div class="contribution-card-inner">
+            <div class="contribution-image-wrapper">
+              <img src="ja1.png" alt="JASA 1">
+            </div>
+            <div class="contribution-content">
+              <h3 class="contribution-title">JASA</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="contribution-card">
+          <div class="contribution-card-inner">
+            <div class="contribution-image-wrapper">
+              <img src="ja2s.png" alt="JASA 2">
+            </div>
+            <div class="contribution-content">
+              <h3 class="contribution-title">JASA</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="contribution-card">
+          <div class="contribution-card-inner">
+            <div class="contribution-image-wrapper">
+              <img src="ja3s.png" alt="JASA 3">
+            </div>
+            <div class="contribution-content">
+              <h3 class="contribution-title">JASA</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="contribution-card">
+          <div class="contribution-card-inner">
+            <div class="contribution-image-wrapper">
+              <img src="ja4.jpg" alt="JASA 4">
+            </div>
+            <div class="contribution-content">
+              <h3 class="contribution-title">JASA</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="contribution-card">
+          <div class="contribution-card-inner">
+            <div class="contribution-image-wrapper">
+              <img src="ja5.jpg" alt="JASA 5">
+            </div>
+            <div class="contribution-content">
+              <h3 class="contribution-title">JASA</h3>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="carousel-controls">
+      <button class="carousel-btn" onclick="previousSlide(2)">⟵ Previous</button>
+      <button class="carousel-btn" onclick="nextSlide(2)">Next ⟶</button>
+    </div>
+
+    <div class="carousel-dots" id="dots2"></div>
+  </div>
+
+  <!-- INTERNSHIP -->
+  <div class="contributions-card">
+    <h2 class="section-header">INTERNSHIP</h2>
+    
+    <div class="carousel-container">
+      <div class="contributions-grid" id="tvCarousel">
+        
+        <div class="contribution-card">
+          <div class="contribution-card-inner">
+            <div class="contribution-image-wrapper">
+              <img src="li1.jpg" alt="Internship 1">
+            </div>
+            <div class="contribution-content">
+              <h3 class="contribution-title">Farewell Ceremony at the Kota Tinggi District Office</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="contribution-card">
+          <div class="contribution-card-inner">
+            <div class="contribution-image-wrapper">
+              <img src="li2.jpg" alt="Internship 2">
+            </div>
+            <div class="contribution-content">
+              <h3 class="contribution-title">Anti-Bullying Program at SJKC Pei Hwa</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="contribution-card">
+          <div class="contribution-card-inner">
+            <div class="contribution-image-wrapper">
+              <img src="li3.jpg" alt="Internship 3">
+            </div>
+            <div class="contribution-content">
+              <h3 class="contribution-title">Kota Tinggi Independence Day Parade</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="contribution-card">
+          <div class="contribution-card-inner">
+            <div class="contribution-image-wrapper">
+              <img src="li4.jpg" alt="Internship 4">
+            </div>
+            <div class="contribution-content">
+              <h3 class="contribution-title">With the staff of the Kota Tinggi District Office</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="contribution-card">
+          <div class="contribution-card-inner">
+            <div class="contribution-image-wrapper">
+              <img src="li5.jpg" alt="Internship 5">
+            </div>
+            <div class="contribution-content">
+              <h3 class="contribution-title">Completion of a Special Project in Information Management</h3>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="carousel-controls">
+      <button class="carousel-btn" onclick="previousSlide(3)">⟵ Previous</button>
+      <button class="carousel-btn" onclick="nextSlide(3)">Next ⟶</button>
+    </div>
+
+    <div class="carousel-dots" id="dots3"></div>
+  </div>
+
+  <!-- YOUTUBE VIDEO 1 -->
+  <div class="video-card">
+    <h2 class="section-header">🎬 Featured Video 1</h2>
+    <div style="text-align: center; padding: 40px;">
+      <a href="https://www.youtube.com/watch?v=YFqun1txw5o" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #ff1493, #ff69b4); color: white; padding: 20px 50px; border-radius: 50px; text-decoration: none; font-size: 20px; font-weight: 700; box-shadow: 0 10px 30px rgba(255, 20, 147, 0.5); transition: 0.3s ease;">
+        ▶️ Watch on YouTube
+      </a>
+    </div>
+  </div>
+
+  <!-- YOUTUBE VIDEO 2 -->
+  <div class="video-card">
+    <h2 class="section-header">🎬 Featured Video 2</h2>
+    <div style="text-align: center; padding: 40px;">
+      <a href="https://www.youtube.com/watch?v=nNVAuBUbKD8" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #ff1493, #ff69b4); color: white; padding: 20px 50px; border-radius: 50px; text-decoration: none; font-size: 20px; font-weight: 700; box-shadow: 0 10px 30px rgba(255, 20, 147, 0.5); transition: 0.3s ease;">
+        ▶️ Watch on YouTube
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// Carousel Manager
+const carousels = [
+  { id: 'brassbandCarousel', dotsId: 'dots1', currentSlide: 0, interval: null },
+  { id: 'cendolCarousel', dotsId: 'dots2', currentSlide: 0, interval: null },
+  { id: 'tvCarousel', dotsId: 'dots3', currentSlide: 0, interval: null }
+];
+
+// Initialize all carousels
+function initCarousels() {
+  carousels.forEach((carousel, index) => {
+    const element = document.getElementById(carousel.id);
+    const slides = element.querySelectorAll('.contribution-card');
+    const dotsContainer = document.getElementById(carousel.dotsId);
+    
+    // Create dots
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i < slides.length; i++) {
+      const dot = document.createElement('span');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.onclick = () => goToSlide(index + 1, i);
+      dotsContainer.appendChild(dot);
+    }
+    
+    // Start autoplay
+    startAutoPlay(index + 1);
+    
+    // Pause on hover
+    element.parentElement.addEventListener('mouseenter', () => stopAutoPlay(index + 1));
+    element.parentElement.addEventListener('mouseleave', () => startAutoPlay(index + 1));
+  });
+}
+
+function updateSlide(carouselIndex) {
+  const carousel = carousels[carouselIndex - 1];
+  const element = document.getElementById(carousel.id);
+  const slides = element.querySelectorAll('.contribution-card');
+  const dots = document.getElementById(carousel.dotsId).querySelectorAll('.dot');
+  
+  element.style.transform = `translateX(-${carousel.currentSlide * 100}%)`;
+  
+  dots.forEach((dot, index) => {
+    dot.classList.toggle('active', index === carousel.currentSlide);
+  });
+}
+
+function nextSlide(carouselIndex) {
+  const carousel = carousels[carouselIndex - 1];
+  const element = document.getElementById(carousel.id);
+  const totalSlides = element.querySelectorAll('.contribution-card').length;
+  
+  carousel.currentSlide = (carousel.currentSlide + 1) % totalSlides;
+  updateSlide(carouselIndex);
+}
+
+function previousSlide(carouselIndex) {
+  const carousel = carousels[carouselIndex - 1];
+  const element = document.getElementById(carousel.id);
+  const totalSlides = element.querySelectorAll('.contribution-card').length;
+  
+  carousel.currentSlide = (carousel.currentSlide - 1 + totalSlides) % totalSlides;
+  updateSlide(carouselIndex);
+}
+
+function goToSlide(carouselIndex, slideIndex) {
+  const carousel = carousels[carouselIndex - 1];
+  carousel.currentSlide = slideIndex;
+  updateSlide(carouselIndex);
+  stopAutoPlay(carouselIndex);
+  startAutoPlay(carouselIndex);
+}
+
+function startAutoPlay(carouselIndex) {
+  const carousel = carousels[carouselIndex - 1];
+  stopAutoPlay(carouselIndex);
+  carousel.interval = setInterval(() => nextSlide(carouselIndex), 4000);
+}
+
+function stopAutoPlay(carouselIndex) {
+  const carousel = carousels[carouselIndex - 1];
+  if (carousel.interval) {
+    clearInterval(carousel.interval);
+    carousel.interval = null;
+  }
+}
+
+// Initialize when page loads
+window.addEventListener('load', initCarousels);
+</script>
+
+</body>
+</html>
